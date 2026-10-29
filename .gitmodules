@@ -1,0 +1,3 @@
+[submodule "lib/M5PM1"]
+	path = lib/M5PM1
+	url = https://github.com/m5stack/M5PM1.git
