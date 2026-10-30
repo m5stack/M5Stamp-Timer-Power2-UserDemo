@@ -1,48 +1,64 @@
-# Product Name
+# Stamp Timer Power2
 
 ## Overview
 
-### SKU:xxx
+### SKU:S021
 
-Description of the product
+Stamp Timer Power2 is a power management module for low-power embedded devices. It integrates the M5PM1 power management IC and adopts a multi-stage power control architecture that enables power for the main controller and various peripherals on demand, effectively reducing overall standby power consumption and extending battery life.
 
-## Related Link
+The module supports DC 5V input/output control, DC 3.7V lithium battery power supply, and input voltage detection. It also integrates a lithium battery charging circuit with two adjustable charging current levels. Featuring a 1.27mm castellated-hole package, the module provides 5 programmable IOs in addition to the basic power input/output control pins. These IOs can be configured as GPIO, ADC, PWM, RGB LED, IRQ, and other functions. The module also supports timed wake-up and external input interrupt wake-up, making it suitable for low-power systems with on-demand power-up, periodic operation, and event-triggered operation.
 
-- [Document & Datasheet](https://docs.m5stack.com/en/unit/product_Link)
+## Features
 
-## Required Libraries:
+- Built-in M5PM1 power management IC
+- Built-in lithium battery charging IC with two adjustable charging current levels (650mA/180mA)
+- 5x programmable expansion IO (GPIO / ADC / PWM / RGB LED / IRQ)
+- Supports DC 5V / DC 3.7V battery input power
+- I2C communication interface (0x6E)
+- 1.27mm-28Pin castellated-hole package
 
-- [Adafruit_BMP280_Library](https://github.com/adafruit/Required_Libraries_Link)
+### Peripherals & Control
+
+- Power button input signal interface
+- Power indicator signal interface
+- Boot control interface for MCU download mode control
+
+## Includes
+
+- 1 x Stamp Timer Power2
+
+## Applications
+
+- Embedded device power management
+- Smart home
+- Low-power IoT devices
+
+## Specifications
+
+| Specification | Parameter |
+| --- | --- |
+| Power Management IC | M5PM1 |
+| Communication Interface | I2C @ 0x6E, supports 100 kHz (default) / 400 kHz |
+| Power Consumption | Shutdown: DC 4.2V@6.72uA<br>Low-power sleep: DC 4.2V@12.27uA |
+| Battery Charging IC | LGS4056HDA, provides two adjustable charging current levels: DC 3.3V@650mA / DC 3.3V@180mA |
+| Load Capacity | 3V3_DCDC_OUT: DC 3.3V@0.6A<br>3V3_LDO_OUT: DC 3.3V@0.4A<br>PY_3V3: DC 3.3V@0.4A<br>EXT_5V_INOUT: DC 5V@1A |
+| Product Size | 18.0 x 14.0 x 2.2mm |
+| Product Weight | 0.7g |
+| Package Size | 138.0 x 93.0 x 5.0mm |
+| Gross Weight | 3.8g |
+
+## Related Links
+
+- [Product Documentation](https://docs.m5stack.com/en/stamp/stamp_timer_power2)
+- [Online Interactive Demo](https://m5stack.github.io/M5Stamp-Timer-Power2-UserDemo/)
+- [Arduino Quick Start](https://docs.m5stack.com/en/arduino/projects/stamp/stamp_timer_power2)
+- [M5PM1 Arduino Driver Library](https://github.com/m5stack/M5PM1)
+- [Stamp Timer Power2 Schematics](https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1294/S021_Stamp_Timer_Power2_SCH_V0.7.1.pdf)
+
+## Required Libraries
+
+- [M5PM1](https://github.com/m5stack/M5PM1)
 
 ## License
 
-- [Product Name- MIT](LICENSE)
-
-## Remaining steps(Editorial Staff Look,After following the steps, remember to delete all the content below)
-
-1. Change [clang format check path](./.github/workflows/clang-format-check.yml#L42-L47).
-2. Add License content to [LICENSE](/LICENSE).
-3. Change link on line 78 of [bug-report.yml](./.github/ISSUE_TEMPLATE/bug-report.yml#L79).
-
-```cpp
-Example
-# M5Unit-ENV
-
-## Overview
-
-### SKU:U001 & U001-B & U001-C
-
-Contains M5Stack-**UNIT ENV** series related case programs.ENV is an environmental sensor with integrated SHT30 and QMP6988 internally to detect temperature, humidity, and atmospheric pressure data.
-
-## Related Link
-
-- [Document & Datasheet](https://docs.m5stack.com/en/unit/envIII)
-
-## Required Libraries:
-
-- [Adafruit_BMP280_Library](https://github.com/adafruit/Adafruit_BMP280_Library)
-
-## License
-
-- [M5Unit-ENV - MIT](LICENSE)
-```
+- [Stamp Timer Power2 - MIT](LICENSE)
