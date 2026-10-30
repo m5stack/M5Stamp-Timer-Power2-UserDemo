@@ -16,9 +16,9 @@
 
 | 环境 | 输出 | 适用范围 |
 | --- | --- | --- |
-| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32 目标 |
-| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 目标 |
-| Web 包 | `dist/S021-Web-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
+| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32 目标 |
+| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 目标 |
+| Web 包 | `dist/S021-Web-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
 
 ```bash
 # ESP32-S3（默认环境）

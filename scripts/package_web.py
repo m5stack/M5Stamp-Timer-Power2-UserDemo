@@ -34,7 +34,7 @@ def main() -> int:
     build_date = args.date or datetime.datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y%m%d")
     output_dir = project / "dist"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output = output_dir / f"S021-Web-UserDemo-v{version}-{commit}(commit)-{args.owner}-{build_date}.zip"
+    output = output_dir / f"S021-Web-UserDemo-v{version}-{commit}-{args.owner}-{build_date}.zip"
 
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for folder_name in ("web", "esp_web"):

@@ -68,9 +68,9 @@ pio run -e esp32
 
 Firmware outputs are complete images merged with bootloader and partitions:
 
-- `dist/S021-ESP32-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin`
-- `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin`
-- `dist/S021-Web-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>.zip` (contains `web/` and `esp_web/`)
+- `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin`
+- `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin`
+- `dist/S021-Web-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>.zip` (contains `web/` and `esp_web/`)
 
 Both images are flashed from offset `0x0`.
 

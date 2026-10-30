@@ -32,9 +32,9 @@
 Merged release images use this name format and are flashed at `0x0`:
 
 ```text
-S021-ESP32-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>_0x0.bin
-S021-ESP32S3-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>_0x0.bin
-S021-Web-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>.zip
+S021-ESP32-UserDemo-v0.1.0-<8-char-commit>-LHY-<YYYYMMDD>_0x0.bin
+S021-ESP32S3-UserDemo-v0.1.0-<8-char-commit>-LHY-<YYYYMMDD>_0x0.bin
+S021-Web-UserDemo-v0.1.0-<8-char-commit>-LHY-<YYYYMMDD>.zip
 ```
 
 See `dist/SHA256SUMS` in the release assets for integrity verification.

@@ -62,7 +62,7 @@ def _merge() -> None:
     arch = "ESP32S3" if chip == "esp32s3" else "ESP32"
     output_dir = project / "dist"
     output_dir.mkdir(parents=True, exist_ok=True)
-    output = output_dir / f"S021-{arch}-UserDemo-v{version}-{commit}(commit)-{owner}-{build_date}_0x0.bin"
+    output = output_dir / f"S021-{arch}-UserDemo-v{version}-{commit}-{owner}-{build_date}_0x0.bin"
     cmd = [
         sys.executable,
         str(esptool),

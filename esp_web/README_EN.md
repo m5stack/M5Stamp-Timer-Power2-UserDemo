@@ -16,9 +16,9 @@ Only two PlatformIO environments are provided:
 
 | Environment | Output | Target |
 | --- | --- | --- |
-| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32 |
-| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 |
-| Web package | `dist/S021-Web-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
+| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32 |
+| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 |
+| Web package | `dist/S021-Web-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
 
 ```bash
 # ESP32-S3 (default environment)
