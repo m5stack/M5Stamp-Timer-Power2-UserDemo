@@ -16,8 +16,9 @@
 
 | 环境 | 输出 | 适用范围 |
 | --- | --- | --- |
-| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32 目标 |
-| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 目标 |
+| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32 目标 |
+| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 目标 |
+| Web 包 | `dist/S021-Web-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
 
 ```bash
 # ESP32-S3（默认环境）
@@ -101,6 +102,7 @@ src/
 └── display_portal.*         # Wi-Fi 二维码和状态显示
 scripts/embed_web.py         # 构建前将 esp_web/ 打包为 gzip 固件资源
 scripts/merge_firmware.py    # 合并 bootloader、分区表和应用
+scripts/package_web.py        # 打包 web/ 与 esp_web/
 scripts/preview_server.py    # 本地网页预览服务器
 esp_web/                     # 硬件版离线网页
 mock_api.py                  # 本地浏览器预览 API

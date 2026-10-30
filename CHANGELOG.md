@@ -13,6 +13,7 @@
 - 完善 Android、Apple、Windows、Samsung 等 captive portal 探测响应。
 - 新增 API 参数边界校验、GitHub Actions 固件构建、第三方许可证说明和安全策略。
 - 新增网页中文/英文 README 与本地 mock/预览工具。
+- 发布包新增 Web 压缩包，包含 `web/` Pages 演示和 `esp_web/` 设备端控制台。
 
 ### English Release Notes
 
@@ -24,14 +25,16 @@
 - Fixed StopWatch board identification, OPI PSRAM/QSPI AMOLED initialization and the compact QR layout for its 466×466 round display.
 - Added captive portal responses for Android, Apple, Windows, Samsung and common Linux probes.
 - Added API validation, GitHub Actions firmware builds, third-party notices, security guidance and Chinese/English Web console documentation.
+- Added a Web release archive containing both the `web/` Pages demo and the `esp_web/` device-hosted console.
 
 ### Firmware Images
 
 Merged release images use this name format and are flashed at `0x0`:
 
 ```text
-S021-ESP32-UserDemo-v0.1.0-<8-char-commit>-LHY-<YYYYMMDD>_0x0.bin
-S021-ESP32S3-UserDemo-v0.1.0-<8-char-commit>-LHY-<YYYYMMDD>_0x0.bin
+S021-ESP32-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>_0x0.bin
+S021-ESP32S3-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>_0x0.bin
+S021-Web-UserDemo-v0.1.0-<8-char-commit>(commit)-LHY-<YYYYMMDD>.zip
 ```
 
 See `dist/SHA256SUMS` in the release assets for integrity verification.

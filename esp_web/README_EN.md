@@ -16,8 +16,9 @@ Only two PlatformIO environments are provided:
 
 | Environment | Output | Target |
 | --- | --- | --- |
-| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32 |
-| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 |
+| `esp32` | `dist/S021-ESP32-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32 |
+| `esp32s3` | `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>_0x0.bin` | ESP32-S3 |
+| Web package | `dist/S021-Web-UserDemo-v0.1.0-<commit>(commit)-LHY-<YYYYMMDD>.zip` | `web/` + `esp_web/` |
 
 ```bash
 # ESP32-S3 (default environment)
@@ -101,6 +102,7 @@ src/
 └── display_portal.*         # Wi-Fi QR code and status display
 scripts/embed_web.py         # gzip and embed esp_web/ before build
 scripts/merge_firmware.py    # merge bootloader, partitions and app
+scripts/package_web.py        # package web/ and esp_web/
 scripts/preview_server.py    # local Web UI preview server
 esp_web/                     # offline hardware console
 mock_api.py                  # local browser preview API

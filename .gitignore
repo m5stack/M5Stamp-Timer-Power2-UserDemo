@@ -69,4 +69,5 @@ __pycache__/
 
 # Generated release binaries and checksums
 dist/*.bin
+dist/*.zip
 dist/SHA256SUMS
