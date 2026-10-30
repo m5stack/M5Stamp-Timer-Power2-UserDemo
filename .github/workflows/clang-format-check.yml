@@ -35,16 +35,14 @@ on:
 jobs:
   formatting-check:
     name: Formatting Check
-    runs-on: [self-hosted, Linux, X64]
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         path:
-          - check: './'    # path to include
-            exclude: ''    # path to exclude
-          #- check: 'src'
-          #  exclude: '(Fonts)' # Exclude file paths containing "Fonts"
-          #- check: 'examples'
-          #  exclude: ''
+          - check: './src'
+            exclude: ''
+          - check: './include'
+            exclude: ''
 
     steps:
       - name: Checkout

@@ -59,3 +59,14 @@ bin/
 obj/
 
 *.code-workspace
+
+# PlatformIO generated web assets
+include/web_assets.h
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Generated release binaries and checksums
+dist/*.bin
+dist/SHA256SUMS

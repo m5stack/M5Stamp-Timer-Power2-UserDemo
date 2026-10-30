@@ -1,0 +1,85 @@
+name: Firmware Build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "include/**"
+      - "scripts/**"
+      - "esp_web/**"
+      - "lib/**"
+      - "mock_api.py"
+      - "platformio.ini"
+      - ".gitmodules"
+      - ".github/workflows/firmware-build.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "include/**"
+      - "scripts/**"
+      - "esp_web/**"
+      - "lib/**"
+      - "mock_api.py"
+      - "platformio.ini"
+      - ".gitmodules"
+      - ".github/workflows/firmware-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build universal firmware
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: platformio-${{ runner.os }}-${{ hashFiles('platformio.ini', '.gitmodules') }}
+
+      - name: Install PlatformIO
+        run: pip install platformio==6.1.19
+
+      - name: Validate Web and utility syntax
+        run: |
+          for file in esp_web/*.js; do node --check "$file"; done
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          for name in ("scripts/embed_web.py", "scripts/merge_firmware.py", "scripts/preview_server.py", "mock_api.py"):
+              ast.parse(Path(name).read_text(), filename=name)
+          PY
+
+      - name: Build both universal images
+        run: pio run -e esp32 -e esp32s3
+
+      - name: Generate checksums
+        run: sha256sum dist/S021-*.bin > dist/SHA256SUMS
+
+      - name: Upload merged firmware images
+        uses: actions/upload-artifact@v4
+        with:
+          name: StampTimerPower2-firmware
+          path: |
+            dist/S021-*.bin
+            dist/SHA256SUMS
+            dist/README.md
+          if-no-files-found: error

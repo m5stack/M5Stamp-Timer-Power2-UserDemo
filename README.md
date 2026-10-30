@@ -47,6 +47,38 @@ The module supports DC 5V input/output control, DC 3.7V lithium battery power su
 | Package Size | 138.0 x 93.0 x 5.0mm |
 | Gross Weight | 3.8g |
 
+## ESP32 / ESP32-S3 Live Web Demo
+
+The project now contains both the hosted Pages demo and a complete PlatformIO firmware:
+
+- `web/` — the existing static Pages simulation.
+- `esp_web/` — the offline hardware console served by the device.
+- `platformio.ini` — only two universal environments: `esp32` and `esp32s3`.
+- `src/`, `include/`, `scripts/` — firmware sources and embedded Web asset generation.
+
+M5Unified/M5GFX detect the actual M5 board, display and I2C bus at runtime. Recognized M5 devices default to the internal `M5.In_I2C`; unknown or custom wiring uses `M5.Ex_I2C`. The firmware starts a WPA2 SoftAP, optionally displays a Wi-Fi QR code, guides the user through I2C pin selection and `0x6E` detection, then serves the live console backed by real M5PM1 registers and operations.
+
+```bash
+# ESP32-S3 universal binary
+pio run -e esp32s3
+
+# ESP32 universal binary
+pio run -e esp32
+```
+
+Firmware outputs are complete images merged with bootloader and partitions:
+
+- `dist/S021-ESP32-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin`
+- `dist/S021-ESP32S3-UserDemo-v0.1.0-<commit>-LHY-<YYYYMMDD>_0x0.bin`
+
+Both images are flashed from offset `0x0`.
+
+See the Web console documentation in [Chinese](esp_web/README.md) or [English](esp_web/README_EN.md) for wiring, API, preview and safety details.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
+
 ## Related Links
 
 - [Product Documentation](https://docs.m5stack.com/en/stamp/stamp_timer_power2)
@@ -58,6 +90,14 @@ The module supports DC 5V input/output control, DC 3.7V lithium battery power su
 ## Required Libraries
 
 - [M5PM1](https://github.com/m5stack/M5PM1)
+- [M5Unified](https://github.com/m5stack/M5Unified) — PlatformIO live web demo
+- [M5GFX](https://github.com/m5stack/M5GFX) — PlatformIO live web demo
+- [QRCode](https://github.com/ricmoo/QRCode) — PlatformIO live web demo
+
+## Security and Third-Party Notices
+
+- [Security policy](SECURITY.md)
+- [Third-party notices](THIRD_PARTY_NOTICES.md)
 
 ## License
 

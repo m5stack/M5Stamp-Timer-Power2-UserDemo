@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f2f4f7">
+<title>Stamp Timer Power2 · Setup</title>
+<style>
+:root{--bg:#f2f4f7;--card:#fff;--ink:#1b2430;--muted:#66727f;--line:#dde3e9;--soft:#f0f3f6;--blue:#087ac1;--blue-soft:#e6f3fc;--ok:#1fae4f;--warn:#b25b00;--err:#c93636;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1318;--card:#171d24;--ink:#e6ebf1;--muted:#98a4b3;--line:#2a333d;--soft:#1f262f;--blue:#49a9ee;--blue-soft:#153349;--ok:#3cc56a;--warn:#ffb35c;--err:#ff7777}}
+*{box-sizing:border-box}html,body{margin:0}body{background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}button,input{font:inherit;color:inherit}[hidden]{display:none!important}
+header{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.01em}.logo{display:grid;place-items:center;width:34px;height:34px;border-radius:7px;background:var(--blue);color:#fff;font:800 15px var(--mono)}header .sp{flex:1}.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid var(--line);border-radius:999px;font:600 12px var(--mono);background:var(--soft)}.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--muted)}.tag.on::before{background:var(--ok)}.tag.err::before{background:var(--err)}
+main{width:min(1120px,calc(100% - 32px));margin:22px auto 48px;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start}.hero{grid-column:1/-1;padding:24px 26px;border:1px solid var(--line);border-radius:10px;background:var(--card);display:flex;gap:24px;align-items:center}.hero h1{font-size:clamp(24px,4vw,38px);line-height:1.12;letter-spacing:-.035em;margin:0 0 8px}.hero p{margin:0;color:var(--muted);max-width:720px}.hero-mark{margin-left:auto;flex:none;width:86px;height:86px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font:800 24px var(--mono);color:var(--blue);background:var(--blue-soft)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;min-width:0}.stack{display:grid;gap:16px}.card h2{font-size:15px;margin:0 0 12px}.card h3{font-size:13px;margin:16px 0 8px;color:var(--muted)}.muted{color:var(--muted)}.mono{font-family:var(--mono)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.fact{border:1px solid var(--line);background:var(--soft);border-radius:7px;padding:9px 10px;min-width:0}.fact span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.fact b{display:block;margin-top:2px;font:650 13px var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px}.step-no{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font:700 12px var(--mono)}.step h2{margin-top:3px}.step-body{min-width:0}.divider{height:1px;background:var(--line);margin:16px 0}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.field input{width:100%;border:1px solid var(--line);border-radius:7px;background:var(--card);padding:9px 10px;font:650 14px var(--mono);outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}.seg{display:flex;margin-top:9px;border:1px solid var(--line);border-radius:7px;overflow:hidden}.seg button{flex:1;border:0;background:var(--soft);padding:8px;cursor:pointer}.seg button+button{border-left:1px solid var(--line)}.seg button[aria-pressed=true]{background:var(--blue);color:#fff}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.btn{border:1px solid var(--line);border-radius:7px;background:var(--soft);padding:9px 14px;cursor:pointer;font-weight:650}.btn:hover{border-color:var(--blue)}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.5;cursor:wait}.presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.preset{border:1px solid var(--line);background:transparent;border-radius:999px;padding:3px 9px;font-size:12px;cursor:pointer}.preset:hover{color:var(--blue);border-color:var(--blue)}
+.bus{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;min-height:28px}.addr{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:2px 8px;font:600 12px var(--mono)}.addr.hit{border-color:var(--ok);color:var(--ok);background:transparent}.status{margin-top:12px;border:1px solid var(--line);border-radius:7px;padding:9px 10px;background:var(--soft);font-size:13px}.status.ok{border-color:var(--ok);background:transparent;color:var(--ok)}.status.err{border-color:var(--err);background:transparent;color:var(--err)}
+.side{position:sticky;top:76px}.checklist{display:grid;gap:9px;margin-top:12px}.check{display:flex;gap:9px;font-size:13px}.check i{flex:none;width:18px;height:18px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font:700 10px var(--mono);font-style:normal;color:var(--muted)}.check.done i{border-color:var(--ok);color:#fff;background:var(--ok)}pre{background:#0f1720;color:#d6e2ee;border-radius:7px;padding:10px;font:12px/1.55 var(--mono);white-space:pre-wrap;margin:8px 0 0}.foot{grid-column:1/-1;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:860px){main{grid-template-columns:1fr}.side{position:static}.hero-mark{display:none}}@media(max-width:560px){header{padding:10px 14px}main{width:min(100% - 24px,1120px);margin-top:14px}.hero{padding:18px}.facts{grid-template-columns:1fr}.card{padding:15px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">M5</span><span>Stamp Timer Power2</span></div>
+  <span class="sp"></span>
+  <span id="net" class="tag" data-zh="设备在线" data-en="Device online">设备在线</span>
+  <div class="seg" style="margin:0;width:auto"><button id="zh" type="button">中文</button><button id="en" type="button">EN</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="muted mono" style="font-size:12px;margin-bottom:6px">S021 · M5PM1 · AP CONFIGURATION</div>
+      <h1 data-zh="连接并识别 Stamp Timer Power2" data-en="Connect and identify Stamp Timer Power2">连接并识别 Stamp Timer Power2</h1>
+      <p data-zh="M5Unified 会自动识别具体 M5 板型。先读取主控信息，再确认自动推导或手动填写的 I2C 引脚；只有扫描到 0x6E 并成功读取 M5PM1 设备信息后，才会进入实时控制台。" data-en="M5Unified detects the actual M5 board automatically. Confirm the I2C pins used by your wiring, then scan. The live console opens only after 0x6E responds and M5PM1 identification succeeds.">M5Unified 会自动识别具体 M5 板型。先读取主控信息，再确认自动推导或手动填写的 I2C 引脚；只有扫描到 0x6E 并成功读取 M5PM1 设备信息后，才会进入实时控制台。</p>
+    </div>
+    <div class="hero-mark">STP2</div>
+  </section>
+
+  <div class="stack">
+    <section class="card">
+      <div class="step">
+        <div class="step-no">1</div>
+        <div class="step-body">
+          <h2 data-zh="设备信息" data-en="Device information">设备信息</h2>
+          <div id="facts" class="facts"><div class="fact"><span>STATUS</span><b>Loading…</b></div></div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="step">
+        <div class="step-no">2</div>
+        <div class="step-body">
+          <h2 data-zh="配置 I2C 并扫描" data-en="Configure I2C and scan">配置 I2C 并扫描</h2>
+          <p class="muted" style="margin:0 0 12px" data-zh="请按实际接线填写；SDA 与 SCL 不能相同。识别到 M5 设备时默认使用内部 I2C，其他接线会自动改用外部 I2C。" data-en="Enter the pins from your wiring. SDA and SCL must differ. Recognized M5 devices default to the internal I2C bus; custom pins use the external bus.">请按实际接线填写；SDA 与 SCL 不能相同。识别到 M5 设备时默认使用内部 I2C，其他接线会自动改用外部 I2C。</p>
+          <div class="formrow">
+            <div class="field"><label for="sda">SDA</label><input id="sda" type="number" min="0" max="48" value="8" inputmode="numeric"></div>
+            <div class="field"><label for="scl">SCL</label><input id="scl" type="number" min="0" max="48" value="9" inputmode="numeric"></div>
+          </div>
+          <div class="seg" id="speed">
+            <button type="button" data-v="100000" aria-pressed="true">100 kHz</button>
+            <button type="button" data-v="400000" aria-pressed="false">400 kHz</button>
+          </div>
+          <div id="presets" class="presets"></div>
+          <div class="actions">
+            <button id="scan" class="btn primary" type="button" data-zh="扫描 I2C 总线" data-en="Scan I2C bus">扫描 I2C 总线</button>
+            <button id="open" class="btn" type="button" hidden data-zh="打开控制台" data-en="Open console">打开控制台</button>
+          </div>
+          <div id="bus" class="bus" aria-live="polite"></div>
+          <div id="status" class="status" data-zh="等待扫描。M5PM1 的 7 位地址是 0x6E。" data-en="Ready. The M5PM1 7-bit address is 0x6E.">等待扫描。M5PM1 的 7 位地址是 0x6E。</div>
+          <div id="identified" class="status ok" hidden></div>
+        </div>
+      </div>
+    </section>
+    <section class="card">
+      <h2 data-zh="接线提示" data-en="Wiring notes">接线提示</h2>
+      <div id="tips" class="stack muted" style="font-size:13px"></div>
+    </section>
+  </div>
+
+  <aside class="card side">
+    <h2 data-zh="接入步骤" data-en="Connection flow">接入步骤</h2>
+    <div class="checklist">
+      <div class="check done"><i>✓</i><span data-zh="手机或电脑已连接设备 AP" data-en="Phone or computer joined the device AP">手机或电脑已连接设备 AP</span></div>
+      <div class="check" id="c-info"><i>2</i><span data-zh="读取主机信息" data-en="Read host information">读取主机信息</span></div>
+      <div class="check" id="c-scan"><i>3</i><span data-zh="扫描到 0x6E" data-en="Find 0x6E on the bus">扫描到 0x6E</span></div>
+      <div class="check" id="c-id"><i>4</i><span data-zh="读取 M5PM1 身份" data-en="Identify M5PM1">读取 M5PM1 身份</span></div>
+    </div>
+    <div class="divider"></div>
+    <h3 style="margin-top:0">AP</h3>
+    <div id="ap" class="mono" style="font-size:12px;line-height:1.8">—</div>
+    <h3 data-zh="控制台地址" data-en="Console URL">控制台地址</h3>
+    <a class="mono" href="/app.html" style="color:var(--blue)">http://192.168.4.1/app.html</a>
+    <p class="muted" style="font-size:12px;margin-top:16px" data-zh="当前页面完全离线运行。若更换 I2C 接线，可随时回到此页重新扫描。" data-en="This page runs fully offline. Return here to rescan after changing the I2C wiring.">当前页面完全离线运行。若更换 I2C 接线，可随时回到此页重新扫描。</p>
+  </aside>
+  <div class="foot">M5Stack · Stamp Timer Power2 hardware demo</div>
+</main>
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+let LANG = localStorage.getItem('stp2-lang') || ((navigator.language || '').startsWith('zh') ? 'zh' : 'en');
+const T = (zh, en) => LANG === 'zh' ? zh : en;
+let speed = 100000;
+let busy = false;
+
+function setLang(l) {
+  LANG = l; localStorage.setItem('stp2-lang', l); document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-zh]').forEach(e => e.textContent = l === 'zh' ? e.dataset.zh : e.dataset.en);
+  $('#zh').setAttribute('aria-pressed', String(l === 'zh')); $('#en').setAttribute('aria-pressed', String(l === 'en'));
+  if (!busy && !$('#status').classList.contains('ok')) $('#status').textContent = T('等待扫描。M5PM1 的 7 位地址是 0x6E。', 'Ready. The M5PM1 7-bit address is 0x6E.');
+  renderTips();
+}
+async function api(path, form) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 9000);
+  try {
+    const r = await fetch(path, form ? {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(form), signal:ctl.signal} : {signal:ctl.signal, cache:'no-store'});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.message || `HTTP ${r.status}`);
+    return j;
+  } finally { clearTimeout(timer); }
+}
+function fact(label, value) { const d = document.createElement('div'); d.className='fact'; d.innerHTML='<span></span><b></b>'; d.firstChild.textContent=label; d.lastChild.textContent=value; return d; }
+function renderInfo(i) {
+  const f = $('#facts'); f.textContent = '';
+  f.append(fact('BOARD', i.board), fact('I2C BUS', i.i2c.bus || 'M5_EXTERNAL'), fact('CHIP', i.chip), fact('CORES / CLOCK', `${i.cores} / ${i.cpuMhz} MHz`), fact('FLASH', `${(i.flashBytes/1048576).toFixed(1)} MB`), fact('FREE HEAP', `${Math.round(i.freeHeap/1024)} KB`), fact('MAC', i.mac), fact('DISPLAY', i.display.width ? `${i.display.width} × ${i.display.height}` : T('无屏幕', 'No display')));
+  $('#ap').textContent = `SSID  ${i.ap.ssid}\nPASS  ${i.ap.password}\nIP    ${i.ap.ip}`;
+  if (i.i2c) { $('#sda').value = i.i2c.sda; $('#scl').value = i.i2c.scl; setSpeed(i.i2c.speed); }
+  $('#c-info').classList.add('done'); $('#c-info').querySelector('i').textContent = '✓';
+  $('#net').className = 'tag on';
+}
+function setSpeed(v) { speed = +v; document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === speed))); }
+function status(msg, cls='') { const e=$('#status'); e.className='status '+cls; e.textContent=msg; }
+function renderTips() {
+  const t = $('#tips'); t.textContent='';
+  const lines = LANG === 'zh' ? [
+    'M5Unified 自动识别具体板型；I2C 默认值优先取该板的内部总线引脚。',
+    'SDA/SCL 都需要上拉，模组本身不含上拉电阻。',
+    'VIN/VBAT 与 3V3 输出按实际供电方案连接，避免同时驱动同一电源轨。',
+    '扫描和后续控制共用当前选中的内部或外部 I2C 总线。',
+    '控制台中的寄存器写入会立即作用于真实 M5PM1，请确认外设供电安全。'
+  ] : [
+    'M5Unified detects the exact board model; I2C defaults come from that board\'s internal bus pins.',
+    'SDA and SCL both need pull-ups; the module does not include them.',
+    'Wire VIN/VBAT and the 3V3 rails according to your power design. Never back-drive a rail.',
+    'Scanning and the live console share the selected internal or external I2C bus.',
+    'Register writes in the console affect the real M5PM1 immediately. Check your load wiring first.'
+  ];
+  lines.forEach(x => { const d=document.createElement('div'); d.textContent='• '+x; t.append(d); });
+}
+function renderPresets(i) {
+  const p = $('#presets'); p.textContent='';
+  (i.presets || []).forEach(x => { const b=document.createElement('button'); b.type='button'; b.className='preset'; b.textContent=x.name; b.onclick=()=>{ $('#sda').value=x.sda; $('#scl').value=x.scl; setSpeed(x.speed || 100000); }; p.append(b); });
+}
+async function scan() {
+  if (busy) return;
+  const sda=+$('#sda').value, scl=+$('#scl').value;
+  if (!Number.isInteger(sda)||!Number.isInteger(scl)||sda<0||scl<0||sda===scl) return status(T('SDA 和 SCL 必须是两个不同的有效引脚。','SDA and SCL must be two different valid pins.'),'err');
+  busy=true; $('#scan').disabled=true; $('#open').hidden=true; $('#identified').hidden=true; $('#bus').textContent=''; status(T('正在扫描总线并验证 0x6E…','Scanning the bus and validating 0x6E…'));
+  try {
+    const r=await api('/api/i2c/scan',{sda,scl,speed});
+    $('#bus').textContent='';
+    (r.addresses||[]).forEach(a=>{ const e=document.createElement('span'); e.className='addr'+(a===0x6e?' hit':''); e.textContent='0x'+a.toString(16).toUpperCase().padStart(2,'0'); $('#bus').append(e); });
+    if (!r.addresses || !r.addresses.length) { const e=document.createElement('span'); e.className='muted'; e.textContent=T('未发现设备','No devices found'); $('#bus').append(e); }
+    if (!r.connected) throw new Error(r.message || T('找到 0x6E，但未能读取 M5PM1 身份。请检查供电、上拉和引脚。','0x6E was found but M5PM1 identification failed. Check power, pull-ups and pins.'));
+    status(T('已找到 0x6E，M5PM1 身份读取成功。正在进入控制台…','0x6E found and M5PM1 identified. Opening the console…'),'ok');
+    $('#c-scan').classList.add('done'); $('#c-scan').querySelector('i').textContent='✓';
+    $('#c-id').classList.add('done'); $('#c-id').querySelector('i').textContent='✓';
+    $('#identified').hidden=false; $('#identified').textContent = `ID ${hex(r.device.id)} · MODEL ${hex(r.device.model)} · HW ${hex(r.device.hw)} · SW ${hex(r.device.sw)}`;
+    $('#open').hidden=false; setTimeout(()=>location.assign('/app.html'), 1200);
+  } catch(e) { status(e.name==='AbortError'?T('请求超时。','Request timed out.'):e.message,'err'); }
+  finally { busy=false; $('#scan').disabled=false; }
+}
+function hex(v){return '0x'+v.toString(16).toUpperCase().padStart(2,'0')}
+$('#zh').onclick=()=>setLang('zh'); $('#en').onclick=()=>setLang('en');
+document.querySelectorAll('#speed button').forEach(b=>b.onclick=()=>setSpeed(b.dataset.v));
+$('#scan').onclick=scan; $('#open').onclick=()=>location.assign('/app.html');
+setLang(LANG);
+api('/api/info').then(i=>{renderInfo(i);renderPresets(i)}).catch(e=>{status(T('无法读取设备信息：','Cannot read device information: ')+e.message,'err');$('#net').className='tag err';});
+</script>
+</body>
+</html>

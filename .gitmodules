@@ -1,3 +1,9 @@
 [submodule "lib/M5PM1"]
 	path = lib/M5PM1
 	url = https://github.com/m5stack/M5PM1.git
+[submodule "lib/M5Unified"]
+	path = lib/M5Unified
+	url = https://github.com/m5stack/M5Unified.git
+[submodule "lib/M5GFX"]
+	path = lib/M5GFX
+	url = https://github.com/m5stack/M5GFX.git
